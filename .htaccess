@@ -1,0 +1,8 @@
+DirectoryIndex main.php
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^([^\.]+)$ $1.php [NC,L]
+
+
+#Deny from 176.159.174.144
+
