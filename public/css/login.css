@@ -1,0 +1,369 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@700&display=swap');
+:root {
+  --color-black: black;  
+  --color-dark-blue: #2F59CC; 
+  --color-light-blue: #5C7AE2; 
+  --color-light-gray: #333; 
+  --color-red: red;  
+  --color-green: green;  
+
+}
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+
+.div_show_password_remember_me {
+  display: flex;
+  justify-content: space-between; /* Distribue les éléments aux extrémités */
+  align-items: center; /* Aligne verticalement les éléments */
+  padding: 10px; /* Optionnel : ajoute un peu d'espace autour du contenu */
+}
+
+.show_password {
+  text-align: left;
+}
+
+.remember_me {
+  text-align: right;
+}
+
+
+.big_container {
+  /* border: 1px solid red; */
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.content {
+  /* border: 1px solid green; */
+  width: 100%;
+}
+
+.noselect {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+label, input[type="checkbox"] {
+  -webkit-touch-callout: default;
+  -webkit-user-select: auto;
+  -khtml-user-select: auto;
+  -moz-user-select: auto;
+  -ms-user-select: auto;
+  user-select: auto;
+}
+
+
+/* Apply a background color to the whole page */
+body {
+  background-color: #f0f0f0;
+  font-family: Arial, sans-serif;
+
+}
+
+.container {
+  text-align: center;
+  max-width: 650px;
+  margin: 50px auto;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.logo_text {
+  animation: bounce 1s;
+  animation-timing-function: cubic-bezier(0.68, -0.55, 0.27, 1.55);
+  font-family: 'Oswald', sans-serif;
+  font-size: 100px;
+}
+
+
+
+.container .div_img {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.container .img {
+  max-width: 400px;
+}
+
+.container input[type="email"],
+.container input[type="text"],
+.container input[type="password"] {
+
+  width: 70%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.container input[type="submit"] {
+
+  width: 70%;
+  padding: 10px;
+  background-color: var(--color-dark-blue);
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.container input[type="submit"]:hover {
+  background-color: #5C7AE2;
+}
+
+.container input[type="submit"]:active {
+  background-color: rgb(0, 55, 0);
+}
+
+.container button#password-toggle {
+
+  background: none;
+  border: none;
+  color: #000000;
+  cursor: pointer;
+  font-size: 14px;
+  text-decoration: underline;
+  margin-top: 10px;
+  transition: color 0.3s ease;
+  padding-right: 20px;
+}
+
+
+.container a {
+  padding-left: 20px;
+  font-size: 14px;
+  color: black;
+
+}
+
+.container button#password-toggle:hover {
+  color: #0056b3;
+}
+
+/* Add some animations */
+.container span,
+.container input[type="password"],
+.container input[type="checkbox"],
+.container input[type="email"],
+.container input[type="submit"],
+.container button#password-toggle {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.6s forwards;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.g-recaptcha {
+  margin-left: 25%;
+}
+
+
+@media screen and (max-width: 1330px) {
+
+  .big_container {
+    /* border: 1px solid red; */
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .content {
+    /* border: 1px solid green; */
+    width: 100%;
+  }
+
+  .logo_text {
+    font-size: 60px;
+    margin-top: 20px;
+    color: black;
+  }
+
+  .contact {
+    display: none;
+  }
+
+  .g-recaptcha {
+    transform: scale(0.8);
+    transform-origin: 0 0;
+    margin-left: 40px;
+  }
+
+  .container {
+    max-width: 340px;
+    margin: 50px auto;
+    padding: 10px;
+
+  }
+
+
+  .container input[type="email"],
+  .container input[type="text"],
+  .container input[type="submit"],
+  .container input[type="password"] {
+
+    width: 80%;
+
+  }
+
+
+  #canvas {
+    display: none;
+  }
+
+  body {
+    background-color: #f0f0f0 !important;
+  }
+
+
+
+}
+
+.popup {
+  position: fixed;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #f0f0f0;
+  color: white;
+  /* Couleur du texte */
+  padding: 10px 20px;
+  border-radius: 5px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.bounce {
+  animation: bounce 1s;
+  animation-timing-function: cubic-bezier(0.68, -0.55, 0.27, 1.55);
+}
+
+.button_register {
+  width: 40%;
+  padding: 10px;
+  background-color: var(--color-dark-blue);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.button_register:hover {
+  background-color: #5C7AE2;
+}
+
+.button_register:active {
+  background-color: rgb(0, 55, 0);
+}
+
+.a_register {
+  padding-left: 0 !important;
+  color: white;
+  text-decoration: none;
+}
+
+
+@keyframes bounce {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+
+.loader {
+  justify-content: center;
+  text-align: center;
+  display: none;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border-top: 3px solid var(--color-dark-blue);
+  border-right: 3px solid transparent;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+}
+
+.display_none {
+  display: none;
+}
+
+
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.show_error_message {
+  width: 100%;
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.message {
+  width: fit-content;
+  color: white;
+  padding: 16px;
+  margin: 10px 0;
+  border-radius: 5px;
+  background-color: var(--color-dark-blue);
+}
+
+.error {
+  color: white;
+  padding: 16px;
+  margin: 10px 0;
+  border-radius: 5px;
+  background-color: var(--color-red);
+}
+
+.show_error_message p {
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+.show_error_message p.show {
+  opacity: 1;
+}
+
