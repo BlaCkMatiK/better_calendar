@@ -1,13 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@700&display=swap');
-:root {
-  --color-black: black;  
-  --color-dark-blue: #2F59CC; 
-  --color-light-blue: #5C7AE2; 
-  --color-light-gray: #333; 
-  --color-red: red;  
-  --color-green: green;  
 
-}
 
 
 * {
@@ -128,7 +119,7 @@ body {
 }
 
 .container input[type="submit"]:hover {
-  background-color: #5C7AE2;
+  background-color: var(--color-lights-blue);
 }
 
 .container input[type="submit"]:active {

@@ -1,17 +1,33 @@
 <?php
+session_start();
+if(!isset($_SESSION['login_status']) || $_SESSION['login_status'] != true){
+    header('Location: index.php');
+}
+
+
+
 include '../src/Calendar.php';
 include '../config/database.php';
 
-$stmt = $pdo->query("SELECT * FROM courses");
+$calendar = new Calendar(date("Y-m-d"));
 
-while ($row = $stmt->fetch()) {
-    echo $row['name'] . "<br>";
+$stmt = $pdo->query("
+    SELECT courses.*, teachers.lastname, places.name AS lieu, types.name AS type
+    FROM courses
+    LEFT JOIN teachers ON courses.teacher = teachers.id
+    LEFT JOIN places ON courses.place = places.id
+    LEFT JOIN types ON courses.type = types.id
+");
+
+if ($stmt->rowCount() > 0) {
+    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+        $calendar->add_event($row['name'], $row['start_time'], 1, $row['color'], [$row['room'], $row['lastname'], $row['lieu'], $row['type']]);
+    }
 }
 
-$calendar = new Calendar('2024-05-12');
-$calendar->add_event('Birthday', '2024-05-03', 1, 'green');
-$calendar->add_event('Doctors', '2024-05-04', 1, 'red');
-$calendar->add_event('Holiday', '2024-05-16', 7);
+// $calendar->add_event('Birthday', '2024-05-03', 1, 'green');
+// $calendar->add_event('Doctors', '2024-05-04', 1, 'red');
+// $calendar->add_event('Holiday', '2024-05-16', 7);
 ?>
 <!DOCTYPE html>
 <html>
@@ -21,17 +37,7 @@ $calendar->add_event('Holiday', '2024-05-16', 7);
     <title>Event Calendar</title>
     <link href="./css/style.css" rel="stylesheet" type="text/css">
     <link href="./css/calendar.css" rel="stylesheet" type="text/css">
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            document.querySelectorAll('.day_num').forEach(function(day) {
-                day.addEventListener('click', function() {
-                    const date = this.getAttribute('data-date');
-                    document.getElementById('event-date').value = date;
-                    document.getElementById('event-form').style.display = 'block';
-                });
-            });
-        });
-    </script>
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
 </head>
 <style>
     * {
@@ -110,20 +116,35 @@ $calendar->add_event('Holiday', '2024-05-16', 7);
         <div>
             <h1>Event Calendar</h1>
         </div>
+
     </nav>
     <div class="content home">
         <?= $calendar ?>
     </div>
-    <div id="event-form" style="display:none;">
-        <form action="calendar.php" method="post">
-            <input type="hidden" id="event-date" name="date">
-            <label for="event-text">Event:</label>
-            <input type="text" id="event-text" name="text" required>
-            <label for="event-color">Color:</label>
-            <input type="text" id="event-color" name="color">
-            <button type="submit">Add Event</button>
-        </form>
-    </div>
+
+    <script>
+    document.addEventListener('mousemove', (e) => {
+      const hoverDiv = document.querySelector('.event_content');
+      if (hoverDiv && hoverDiv.classList.contains('follow-mouse')) {
+        hoverDiv.style.left = e.clientX + 'px';
+        hoverDiv.style.top = e.clientY + 'px';
+      }
+    });
+
+    document.addEventListener('mouseenter', (e) => {
+      const hoverDiv = document.querySelector('.event_content');
+      if (hoverDiv) {
+        hoverDiv.classList.add('follow-mouse');
+      }
+    });
+
+    document.addEventListener('mouseleave', (e) => {
+      const hoverDiv = document.querySelector('.event_content');
+      if (hoverDiv) {
+        hoverDiv.classList.remove('follow-mouse');
+      }
+    });
+  </script>
 </body>
 
 </html>

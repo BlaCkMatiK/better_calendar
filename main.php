@@ -1,13 +1,7 @@
 <?php
 
-$db_host = $_ENV['MYSQL_HOST'];
-$db_user_user = $_ENV['MYSQL_USER'];
-$db_password_user = $_ENV['MYSQL_PASSWORD'];
-try {
-    $conn_workshop_pdo = new PDO("mysql:host=$db_host;dbname=workshop", $db_user_user, $db_password_user);
-    $conn_workshop_pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-} catch (PDOException $e) {
-}
+include("config/database.php");
+
 
 
 ini_set('display_errors', 1);
@@ -40,7 +34,6 @@ if (!isset($_SESSION['csrf_token'])) {
 
 <!DOCTYPE HTML>
 <html>
-
 <head>
     <title>Workshop</title>
     <html lang="fr">
@@ -49,9 +42,9 @@ if (!isset($_SESSION['csrf_token'])) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="public/css/login.css">
+    <link rel="stylesheet" href="public/css/root.css">
     <meta https-equiv="X-Frame-Options" content="DENY">
 </head>
-
 <body>
     <div class="big_container" id="customCursor">
         <div class="content">
@@ -61,14 +54,10 @@ if (!isset($_SESSION['csrf_token'])) {
                     <div class="logo_text noselect">Workshop</div>
                     <br><br><br>
                     <input type="hidden" name="csrf_token" value="<?php echo $_SESSION['csrf_token']; ?>">
-
                     <input type="email" maxlength="100" class="noselect" name="pseudo_user" placeholder="Votre mail..." required>
-
                     <input type="password" id="password" class="password-toggle noselect" maxlength="100"
                         name="password" placeholder="Votre mot de passe..." required>
-
                     <br><br>
-
                     <input type="submit" class="button-pulse noselect" name="valider" id="button_login"
                         value="Connexion !">
                     <span id="loader_login" class="loader" style="display: none;"></span>
@@ -79,9 +68,7 @@ if (!isset($_SESSION['csrf_token'])) {
                     onclick="togglePasswordVisibility()">Afficher
                     le
                     mot de passe</button>
-                <br><br><br>
-
-                <br><br>
+                <br><br><br><br>
             </div>
             <div class="show_error_message">
                 <?php
@@ -95,7 +82,6 @@ if (!isset($_SESSION['csrf_token'])) {
                 }
                 ?>
             </div>
-
         </div>
     </div>
 </body>
@@ -156,12 +142,4 @@ document.addEventListener("DOMContentLoaded", function () {
     showMessages();
     hideMessages();
 });
-
-
-
-
-
-
-
-
 </script>
