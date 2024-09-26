@@ -1,13 +1,8 @@
-
-
-
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-
-
 
 .div_show_password_remember_me {
   display: flex;
@@ -23,7 +18,6 @@
 .remember_me {
   text-align: right;
 }
-
 
 .big_container {
   /* border: 1px solid red; */
@@ -57,10 +51,8 @@ label, input[type="checkbox"] {
   user-select: auto;
 }
 
-
-/* Apply a background color to the whole page */
 body {
-  background-color: #f0f0f0;
+  background-color: var(  --color-violet-epsi);
   font-family: Arial, sans-serif;
 
 }
@@ -81,10 +73,8 @@ body {
   animation: bounce 1s;
   animation-timing-function: cubic-bezier(0.68, -0.55, 0.27, 1.55);
   font-family: 'Oswald', sans-serif;
-  font-size: 100px;
+  font-size: 70px;
 }
-
-
 
 .container .div_img {
   text-align: center;
@@ -110,7 +100,7 @@ body {
 
   width: 70%;
   padding: 10px;
-  background-color: var(--color-dark-blue);
+  background-color: var(--color-dark-yellow);
   color: #fff;
   border: none;
   border-radius: 4px;
@@ -119,7 +109,7 @@ body {
 }
 
 .container input[type="submit"]:hover {
-  background-color: var(--color-lights-blue);
+  background-color: var(--color-light-yellow);
 }
 
 .container input[type="submit"]:active {
@@ -139,19 +129,16 @@ body {
   padding-right: 20px;
 }
 
-
 .container a {
   padding-left: 20px;
   font-size: 14px;
   color: black;
-
 }
 
 .container button#password-toggle:hover {
   color: #0056b3;
 }
 
-/* Add some animations */
 .container span,
 .container input[type="password"],
 .container input[type="checkbox"],
@@ -173,7 +160,6 @@ body {
 .g-recaptcha {
   margin-left: 25%;
 }
-
 
 @media screen and (max-width: 1330px) {
 
@@ -214,27 +200,17 @@ body {
 
   }
 
-
   .container input[type="email"],
   .container input[type="text"],
   .container input[type="submit"],
   .container input[type="password"] {
 
     width: 80%;
-
   }
-
 
   #canvas {
     display: none;
   }
-
-  body {
-    background-color: #f0f0f0 !important;
-  }
-
-
-
 }
 
 .popup {
@@ -244,7 +220,6 @@ body {
   transform: translateX(-50%);
   background-color: #f0f0f0;
   color: white;
-  /* Couleur du texte */
   padding: 10px 20px;
   border-radius: 5px;
   opacity: 0;
@@ -259,7 +234,7 @@ body {
 .button_register {
   width: 40%;
   padding: 10px;
-  background-color: var(--color-dark-blue);
+  background-color: var(--color-dark-yellow);
   color: white;
   border: none;
   border-radius: 4px;
@@ -281,7 +256,6 @@ body {
   text-decoration: none;
 }
 
-
 @keyframes bounce {
 
   0%,
@@ -294,7 +268,6 @@ body {
   }
 }
 
-
 .loader {
   justify-content: center;
   text-align: center;
@@ -302,7 +275,7 @@ body {
   width: 30px;
   height: 30px;
   border-radius: 50%;
-  border-top: 3px solid var(--color-dark-blue);
+  border-top: 3px solid var(--color-dark-yellow);
   border-right: 3px solid transparent;
   box-sizing: border-box;
   animation: rotation 1s linear infinite;
@@ -311,8 +284,6 @@ body {
 .display_none {
   display: none;
 }
-
-
 
 @keyframes rotation {
   0% {
@@ -338,7 +309,7 @@ body {
   padding: 16px;
   margin: 10px 0;
   border-radius: 5px;
-  background-color: var(--color-dark-blue);
+  background-color: var(--color-dark-yellow);
 }
 
 .error {
@@ -357,4 +328,3 @@ body {
 .show_error_message p.show {
   opacity: 1;
 }
-

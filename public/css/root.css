@@ -1,10 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@700&display=swap');
 :root {
   --color-black: black;  
-  --color-dark-blue: #2F59CC; 
-  --color-light-blue: #5C7AE2; 
+  --color-dark-yellow: #daad27; 
+  /* --color-dark-yellow: rgba(255, 230, 154, 0.742);  */
+  --color-light-yellow: #fad053cb; 
   --color-light-gray: #333; 
-  --color-red: red;  
+  --color-rouge-epsi: #da4759;  
+  --color-rouge-epsi-hover: #dc2036;  
   --color-green: green;  
+  --color-epsi-gray: #eeeff3;  
+  --color-violet-epsi: #261F48;  
+  --color-violet-epsi-hover: #170f41;  
 
 }

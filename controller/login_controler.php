@@ -29,7 +29,7 @@ if (isset($_POST['valider'])) {
                         $password = mysqli_real_escape_string($conn_workshop_mysqli, $_POST["password"]);
                         $password = htmlspecialchars($password, ENT_QUOTES, 'UTF-8');
                         $password = hash('sha256', $password);
-                        $stmt = $conn_workshop_mysqli->prepare("SELECT * FROM user WHERE email=? AND password=?");
+                        $stmt = $conn_workshop_mysqli->prepare("SELECT * FROM users WHERE email=? AND password=?");
                         $stmt->bind_param("ss", $Pseudo, $password);
                         $stmt->execute();
                         $result = $stmt->get_result();
@@ -49,20 +49,38 @@ if (isset($_POST['valider'])) {
                             $row = $result->fetch_assoc();
                             $id_utilisateur = htmlspecialchars($row['id_utilisateur']);
                             $id_role = $row['role'];
-                            $_SESSION['role'] = $role;
+                            // Query to get the role label based on the user's role_id
+                            $query = "SELECT label FROM roles WHERE id = :role_id";
+
+                            $stmt2 = $pdo->prepare($query);
+                            $stmt2->bindParam(':role_id', $id_role, PDO::PARAM_INT);
+                            $stmt2->execute();
+
+                            // Fetch the role label
+                            $role = $stmt2->fetch(PDO::FETCH_ASSOC);
+
+                            if ($role) {
+                                // Store the role label in the session
+                                $_SESSION['role'] = $role['label'];
+                            } else {
+                                $_SESSION['role'] = "BRUH";
+                            }
+                                                        $_SESSION['nom'] = htmlspecialchars($row['nom']);
+                            $_SESSION['prenom'] = htmlspecialchars($row['prenom']);
                             $_SESSION['id_utilisateur'] = htmlspecialchars($id_utilisateur);
                             $_SESSION['pseudo_user'] = htmlspecialchars($Pseudo);
-                            $_SESSION['user_ip'] = $_SERVER['REMOTE_ADDR'];
+                                                        $_SESSION['user_ip'] = $_SERVER['REMOTE_ADDR'];
                             $_SESSION['user_agent'] = $_SERVER['HTTP_USER_AGENT'];
                             $_SESSION['heure_login'] = date("Y-m-d H:i:s");
                             $_SESSION['login_status'] = true;
         
                             $_SESSION['error'] = "Vous êtes connecté avec succès $Pseudo ! , redirection en cours";
 
-
+                            $random_sleep = rand(1, 2);
+                            sleep($random_sleep);
                             header("Referrer-Policy: origin");
                             http_response_code(200);
-                            header("Location: $domain_name/");
+                            header("Location: $domain_name/week");
 
 
                         }

@@ -35,7 +35,7 @@ if (!isset($_SESSION['csrf_token'])) {
 <!DOCTYPE HTML>
 <html>
 <head>
-    <title>Workshop</title>
+    <title>Better Calendar</title>
     <html lang="fr">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <meta charset="UTF-8">
@@ -51,8 +51,8 @@ if (!isset($_SESSION['csrf_token'])) {
             <div class="container noselect">
                 <form method="post" action="controller/login_controler.php"
                     id="form_login">
-                    <div class="logo_text noselect">Workshop</div>
-                    <br><br><br>
+                    <div class="logo_text noselect">Better Calendar</div>
+                    <br>
                     <input type="hidden" name="csrf_token" value="<?php echo $_SESSION['csrf_token']; ?>">
                     <input type="email" maxlength="100" class="noselect" name="pseudo_user" placeholder="Votre mail..." required>
                     <input type="password" id="password" class="password-toggle noselect" maxlength="100"
@@ -112,7 +112,7 @@ function showLoading() {
     setTimeout(function () {
         submitButton.classList.remove('display_none');
         loader_login.style.display = 'none';
-    }, 1900);
+    }, 1100);
 }
 
 document.getElementById('form_login').addEventListener('submit', function (event) {

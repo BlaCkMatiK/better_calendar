@@ -1,0 +1,264 @@
+    * {
+        padding: 0;
+        margin: 0;
+    }
+
+
+
+    .header_navigation {
+        width: 100%;
+        /* height: 80px; */
+        box-sizing: border-box;
+        display: flex;
+        background-color: var(--color-violet-epsi);
+        justify-content: space-between;
+        padding-bottom: 10px;
+        align-items: center;
+    }
+
+    @media only screen and (max-width: 600px) {
+        .header_navigation {
+            flex-direction: column;
+            align-items: center;
+        }
+    }
+
+    .start, .end {
+        margin-right: auto; 
+    }
+
+    .box_semaine_spinner {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 70px;
+        /* width: 33%; */
+        /* border: 1px solid black; */
+    }
+
+    .view_choice {
+        padding: 10px;
+        border-radius: 10px;
+        background-color: var(--color-dark-yellow);
+
+    }
+
+
+
+
+    .box_button_right {
+        display: flex;
+        /* width: 33%; */
+        justify-content: right;
+        gap: 20px;
+        align-items: center;
+        height: 70px;
+    }
+
+    .box_button_left {
+        display: flex;
+        justify-content: left;
+        align-items: center;
+        /* width: 33%; */
+        /* height: 70px; */
+    }
+
+    .disconnect_button {
+        padding: 6px;
+        background-color: var(--color-rouge-epsi);
+        border: none;
+        border-radius: 7px;
+        color: white;
+        cursor: pointer;
+
+    }
+
+    .date_select {
+        display: flex;
+
+    }
+
+    .disconnect_a:hover,
+    .disconnect_button:hover {
+        background-color: var(--color-rouge-epsi);
+        border-radius: 7px;
+    }
+
+    .disconnect_a {
+        text-decoration: none;
+        color: black;
+        cursor: pointer;
+    }
+
+    .logo_epsi {
+        /* width: 300px; */
+        height: 80px;
+    }
+
+
+
+
+
+    .box_semaine_spinner form {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+
+
+    .bouton_semaine_precedente:active,
+    .bouton_semaine_suivante:active {
+        background-color: #003d80;
+        transform: scale(0.98);
+    }
+
+    .box_semaine_spinner form select {
+        padding: 10px;
+        border-radius: 10px;
+    }
+
+    option:checked {
+        background-color: var(--color-violet-epsi);
+        color: white;
+    }
+    
+    .content_global {
+        margin-top: 0 !important;
+        background-color: var(--color-epsi-gray);
+        width: 100%;
+    }
+
+    .content {
+        box-sizing: border-box;
+        width: 100%;
+        height: calc(100vh - 80px);
+        /* background-color: var(  --color-epsi-gray); */
+    }
+
+    /* body {
+        background-color: var(  --color-epsi-gray) !important;
+    } */
+
+
+    /* Encapsuler les styles pour le formulaire dans la modale */
+
+    .add-event-form {
+        background-color: var(--color-violet-epsi);
+        padding: 20px;
+        border-radius: 10px;
+    }
+
+    /* Style pour les labels */
+    .add-event-form .form-label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: bold;
+        color: var(--color-light-yellow);
+    }
+
+    /* Style pour les input, select et textarea */
+    .add-event-form .form-input,
+    .add-event-form select,
+    .add-event-form textarea {
+        width: 100%;
+        padding: 7px;
+        margin-bottom: 10px;
+        border: 2px solid var(--color-violet-epsi);
+        border-radius: 10px;
+        background-color: var(--color-epsi-gray);
+        color: var(--color-black);
+        font-size: 13px;
+        transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    /* Effet lors du focus sur les input, select et textarea */
+    .add-event-form .form-input:focus,
+    .add-event-form select:focus,
+    .add-event-form textarea:focus {
+        outline: none;
+        border-color: var(--color-light-yellow);
+        box-shadow: 0 0 8px var(--color-light-yellow);
+    }
+
+    /* Style spécifique pour les boutons submit */
+    .add-event-form .form-submit {
+        background-color: var(--color-light-yellow);
+        color: var(--color-black);
+        padding: 12px;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        width: 100%;
+        font-size: 18px;
+        transition: background-color 0.3s ease;
+    }
+
+    /* Effet hover sur les boutons submit */
+    .add-event-form .form-submit:hover {
+        background-color: var(--color-dark-yellow);
+    }
+
+    /* Style pour les dropdowns (select) */
+    .add-event-form select {
+        padding: 12px;
+        border-radius: 10px;
+        background-color: var(--color-epsi-gray);
+        border: 2px solid var(--color-violet-epsi);
+        color: var(--color-black);
+    }
+
+    /* Optionnel : Style pour textarea (si vous en avez besoin dans le futur) */
+    .add-event-form textarea {
+        min-height: 100px;
+        resize: vertical;
+    }
+
+    .modal-body {
+        border-radius: 0 0 20px 20px;
+    }
+
+    .modal-content {
+        border-radius: 20px;
+    }
+
+    .modal-dialog {
+        max-height: 90vh;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .modal-body {
+        overflow-y: auto;
+        max-height: 60vh;
+        padding: 20px;
+    }
+
+    .modal-content {
+        border-radius: 20px;
+        overflow: hidden;
+    }
+
+    ::-webkit-scrollbar {
+        width: 6px;
+        background-color: var(--color-violet-epsi);
+    }
+
+    ::-webkit-scrollbar-track {
+        background-color: var(--color-violet-epsi);
+        border-radius: 5px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background-color: var(--color-light-yellow);
+        border-radius: 5px;
+        /* border: 2px solid var(--color-violet-epsi); */
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+        background-color: var(--color-dark-yellow);
+    }
+
+    ::-webkit-scrollbar-thumb:active {
+        background-color: var(--color-dark-yellow);
+    }

@@ -1,0 +1,487 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+
+
+.header_navigation {
+    width: 100%;
+    height: 80px;
+    box-sizing: border-box;
+    display: flex;
+    background-color: var(--color-violet-epsi);
+
+}
+
+.box_semaine_spinner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70px;
+    width: 33%;
+    /* border: 1px solid black; */
+}
+
+.view_choice {
+    padding: 10px;
+    border-radius: 10px;
+    background-color: var(--color-dark-yellow);
+
+}
+
+
+
+
+.box_button_right {
+    display: flex;
+    width: 33%;
+    justify-content: right;
+    gap: 20px;
+    align-items: center;
+    height: 70px;
+}
+
+.box_button_left {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    width: 33%;
+    height: 70px;
+}
+
+.disconnect_button {
+    padding: 6px;
+    background-color: var(--color-rouge-epsi);
+    border: none;
+    border-radius: 7px;
+    color: white;
+    cursor: pointer;
+
+}
+
+.disconnect_a:hover,
+.disconnect_button:hover {
+    background-color: var(--color-rouge-epsi);
+    border-radius: 7px;
+}
+
+.disconnect_a {
+    text-decoration: none;
+    color: black;
+    cursor: pointer;
+}
+
+.logo_epsi {
+    width: 300px;
+    height: 80px;
+}
+
+
+
+.content {
+    box-sizing: border-box;
+    width: 100%;
+    height: calc(100vh - 80px);
+    background-color: var(--color-epsi-gray);
+    display: flex;
+    flex-direction: row;
+
+
+}
+
+
+
+.content_center {
+    height: calc(100vh - 80px);
+    width: 33%;
+    
+    display: flex;
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    margin-top: 40px;
+}
+
+.content_left {
+    height: calc(100vh - 80px);
+    width: 33%;
+    
+    display: flex;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* LISTE DES roomsS */
+
+
+
+
+.content_right {
+    height: calc(100vh - 80px);
+    width: 33%;
+    
+    display: flex;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.content_right_rooms_list {
+    background-color: var(--color-violet-epsi);
+    height: 90%;
+    width: 90%;
+
+    border-radius: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+
+}
+
+.content_right_rooms_list_title {
+    padding: 13px;
+    margin-top: 10px;
+    text-align: center;
+    color: white;
+    border-radius: 30px;
+}
+
+.content_right_rooms_list_box {
+    width: 90%;
+    height: fit-content;
+    background-color: var(--color-dark-yellow);
+    border-radius: 10px;
+}
+
+.content_right_rooms_box {
+    border-radius: 10px;
+    overflow-y: auto;
+    max-height: calc(100% - 100px);
+    width: 95%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+}
+
+
+
+.content_right_rooms_list_box_header {
+    width: 100%;
+    height: 40px;
+    display: flex;
+}
+
+.content_right_rooms_list_box_header_title {
+    height: 40px;
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    font-size: 18px;
+    padding: 14px;
+}
+
+.content_right_rooms_list_box_header_quantity {
+    height: 40px;
+    width: 10%;
+    display: flex;
+    padding: 14px;
+    font-size: 16px;
+    flex-direction: column;
+}
+
+.content_right_rooms_list_capacity,
+.content_right_rooms_list_category,
+.content_right_rooms_list_emprunt_date,
+.content_right_rooms_list_user,
+.content_right_rooms_list_description {
+    padding: 8px;
+    padding-top: 10px;
+    padding-left: 14px;
+
+}
+
+
+
+.content_right_rooms_return {
+    padding: 8px;
+    background-color: var(--color-violet-epsi);
+    border: none;
+    color: white;
+    border-radius: 8px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    float: right;
+}
+
+.content_right_rooms_return:hover {
+    background-color: var(--color-violet-epsi-hover);
+}
+
+
+
+
+
+
+
+
+
+
+/* LSITE DES rooms EMPRENTe */
+
+
+
+
+
+.content_left_rooms_list {
+    background-color: var(--color-violet-epsi);
+    height: 90%;
+    width: 90%;
+
+    border-radius: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+
+}
+
+
+
+.content_left_rooms_list_title {
+    padding: 13px;
+    margin-top: 10px;
+    text-align: center;
+    color: white;
+    border-radius: 30px;
+}
+
+.content_left_rooms_list_box {
+    width: 90%;
+    height: 120px;
+    background-color: var(--color-dark-yellow);
+    border-radius: 10px;
+}
+
+.content_left_rooms_box {
+    border-radius: 10px;
+    overflow-y: auto;
+    max-height: calc(100% - 100px);
+    width: 95%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    }
+
+.category_title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 20px;
+    color: white; 
+}
+
+.content_left_rooms_list_box_header {
+    width: 100%;
+    height: 40px;
+    display: flex;
+}
+
+.content_left_rooms_list_box_header_title {
+    height: 40px;
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    font-size: 18px;
+    padding: 14px;
+}
+
+.content_left_rooms_list_box_header_quantity {
+    height: 40px;
+    width: 10%;
+    display: flex;
+    padding: 14px;
+    font-size: 16px;
+    flex-direction: column;
+}
+
+.content_left_rooms_list_capacity,
+.content_left_rooms_list_category,
+.content_left_rooms_list_description {
+    padding: 8px;
+    padding-top: 10px;
+    padding-left: 14px;
+
+}
+
+
+
+/* FORMULAIRE EMPRUMP */
+.content_center_reservation_form {
+    background-color: var(--color-violet-epsi);
+    height: fit-content;
+    width: 90%;
+
+    border-radius: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.content_center_form {
+    width: 90%;
+    height: fit-content;
+    max-height: 300px;
+    background-color: var(--color-dark-yellow);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: left;
+    margin-bottom: 20px;
+}
+
+
+
+.content_center_form_title {
+    padding: 13px;
+    margin-top: 10px;
+    text-align: center;
+    color: white;
+    border-radius: 30px;
+}
+
+
+
+.content_center_form_label {
+    padding: 13px;
+
+}
+
+.content_center_form_select {
+    padding: 13px;
+    margin-left: 10px;
+    border: none;
+    width: 230px;
+    border-radius: 10px;
+}
+
+.content_center_form_submit {
+    padding: 8px;
+    background-color: var(--color-violet-epsi);
+    border: none;
+    color: white;
+    border-radius: 8px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    float: right;
+}
+
+.content_center_chart {
+    width: 450px;
+    height: 350px;
+}
+
+
+#materielChart {
+    max-width: 450px;
+    width: 100%;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+::-webkit-scrollbar {
+    width: 6px;
+    background-color: var(--color-violet-epsi);
+}
+
+::-webkit-scrollbar-track {
+    background-color: var(--color-violet-epsi);
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: var(--color-light-yellow);
+    border-radius: 5px;
+    /* border: 2px solid var(--color-violet-epsi); */
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: var(--color-dark-yellow);
+}
+
+::-webkit-scrollbar-thumb:active {
+    background-color: var(--color-dark-yellow);
+}
+
+
+
+@media (max-width: 768px) {
+    .content {
+        box-sizing: border-box;
+        width: 100%;
+        height: calc(100vh - 80px);
+        background-color: var(--color-epsi-gray);
+        display: flex;
+        flex-direction: column;
+
+
+    }
+    .content_center {
+        height: calc(100vh - 80px);
+        width: 100%;
+        /*  */
+        display: flex;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .content_left {
+        height: calc(100vh - 80px);
+        width: 100%;
+        /*  */
+        display: flex;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .content_right {
+        height: calc(100vh - 80px);
+        width: 100%;
+        /*  */
+        display: flex;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .content_center_chart {
+        display: none;
+    }
+}

@@ -16,15 +16,16 @@
 }
 
 .calendar .days .day_name {
+    text-align: center;
     width: calc(100% / 7);
-    border-right: 1px solid #2c7aca;
-    padding: 20px;
+    border-right: 1px solid var(--color-light-yellow);
+    padding: 5px;
     text-transform: uppercase;
     font-size: 12px;
     font-weight: bold;
     color: #818589;
     color: #fff;
-    background-color: #448cd6;
+    background-color: var(--color-dark-yellow);
 }
 
 .calendar .days .day_name:nth-child(7) {
@@ -37,9 +38,10 @@
     width: calc(100% / 7);
     border-right: 1px solid #e6e9ea;
     border-bottom: 1px solid #e6e9ea;
-    padding: 15px;
+    padding: 3px;
     font-weight: bold;
     color: #7c878d;
+    background-color: white;
     cursor: pointer;
     min-height: 100px;
 }
@@ -54,12 +56,20 @@
     margin-top: 10px;
     font-weight: 500;
     font-size: 14px;
-    padding: 3px 6px;
+    /* padding: 3px 6px; */
+    padding: 15px;
     border-radius: 4px;
     background-color: #f7c30d;
     color: #fff;
     word-wrap: break-word;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
 }
+
+
 
 .calendar .days .day_num .event.green {
     background-color: #51ce57;
@@ -84,21 +94,25 @@
 .calendar .days .day_num.ignore {
     background-color: #fdfdfd;
     color: #ced2d4;
-    cursor: inherit;
 }
 
 .calendar .days .day_num.selected {
     background-color: #f1f2f3;
-    cursor: inherit;
 }
 
 .event_content {
     display: none;
     position: absolute;
-    background-color: #bd2424;
     padding: 10px;
     border: 1px solid #ddd;
     z-index: 1;
+    background: rgba(2, 2, 2, 0.495);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    min-width: 200px;
 }
 
 .event:hover .event_content {
@@ -113,4 +127,58 @@
 
 .event_content span {
     min-width: max-content;
+    text-align: center;
+}
+
+* {
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, "segoe ui", roboto, oxygen, ubuntu, cantarell, "fira sans", "droid sans", "helvetica neue", Arial, sans-serif;
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+    background-color: #FFFFFF;
+    margin: 0;
+}
+
+.navtop {
+    background-color: #261f48;
+    height: 60px;
+    width: 100%;
+    border: 0;
+}
+
+.navtop div {
+    display: flex;
+    width: 800px;
+    height: 100%;
+}
+
+.navtop a img {
+    height: -webkit-fill-available;
+}
+
+.navtop div h1 {
+    flex: 1;
+    font-size: 24px;
+    padding: 0;
+    margin: 0;
+    color: #ebedee;
+    font-weight: normal;
+}
+
+.content {
+    /* width: 800px; */
+    height: calc(100vh - 100px);
+    margin: 0 auto;
+}
+
+.content h2 {
+    margin: 0;
+    padding: 25px 0;
+    font-size: 22px;
+    border-bottom: 1px solid #ebebeb;
+    color: white;
 }

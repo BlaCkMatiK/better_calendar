@@ -1,0 +1,53 @@
+.calendar .days .day_name {
+    width: calc(100% / 5) !important;
+}
+
+.calendar .days .day_num {
+    height: 500px;
+    width: calc(100% / 5) !important;
+}
+
+.calendar .days .day_num span {
+    width: fit-content !important;
+    text-align: center;
+}
+
+.event {
+    background-color: #db34b3;
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
+    align-items: center;
+}
+
+.event .title {
+    margin: 15px;
+    text-transform: capitalize;
+}
+
+.event .teacher {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+@media only screen and (max-width: 600px) {
+    .calendar .days .day_num .event {
+     aspect-ratio: 1 / 1;
+     /* height: 800px; */
+    }
+  }
+
+.event .type {
+    display: flex;
+}
+
+
+.modal-dialog {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    margin: 0;
+    width: auto;
+    max-width: 300px; /* Adjust width as needed */
+  }

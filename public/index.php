@@ -16,4 +16,4 @@ if ((!isset($_SESSION['pseudo_user'])) || (!isset($_SESSION['id_utilisateur'])))
 // Redirige vers la page d'accueil
 header('Location: /views/home.php');
 exit();
-?>
+
