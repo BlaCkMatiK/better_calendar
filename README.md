@@ -149,3 +149,7 @@ L'application intègre plusieurs mesures de sécurité :
 ## Licence
 
 Ce projet est sous licence **MIT**. Vous êtes libre d'utiliser, de modifier et de distribuer ce projet tant que vous respectez les termes de cette licence.
+
+---
+
+Retrouvez [ici](https://docs.google.com/document/d/1TauTeQFcbOL6UwCnJpKcYteQTrv6GKvvQzTX-u7ZEy8/edit?usp=sharing) notre documentation technique supplémentaire !
