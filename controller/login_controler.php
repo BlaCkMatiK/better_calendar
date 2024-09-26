@@ -19,8 +19,6 @@ if (isset($_POST['valider'])) {
                 header('HTTP/1.1 401 Unauthorized');
                 exit();
             } else {
-
-
                 if (filter_var($_POST["pseudo_user"], FILTER_VALIDATE_EMAIL)) {
                     if (strlen($_POST["password"]) < 50) {
                         // L'adresse e-mail est valide, traiter les données

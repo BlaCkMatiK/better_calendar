@@ -3,7 +3,6 @@ class Calendar
 {
     public $active_year, $active_month, $active_day, $active_week, $format;
     public $events = [];
-
     public function __construct($date = null,  $week = null)
     {
         $this->active_year = $date != null ? date('Y', strtotime($date)) : date('Y');
@@ -12,16 +11,13 @@ class Calendar
         $this->active_day = $date != null ? date('d', strtotime($date)) : date('d');
         $this->format = isset($_SESSION['view_method']) && $_SESSION['view_method'] === 'week' ? 'week' : 'month';
     }
-
     public function add_event($txt, $date, $days = 1, $color = '', $content = [])
     {
         $this->events[] = [$txt, $date, $days, $color, $content];
     }
-
     public function __toString()
     {
         $days = ['Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam', 'Dim'];
-
         $html = '<div class="calendar">';
         $html .= '<div class="header">';
         $html .= '</div>';
@@ -33,16 +29,13 @@ class Calendar
             // Mode mois : affichage du mois entier
             $html .= $this->render_month_view($days);
         }
-
         $html .= '</div>'; // fin des jours
         $html .= '</div>'; // fin du calendrier
         return $html;
     }
-
     private function render_week_view($days)
     {
         $html = '';
-
         // Affichage des noms des jours pour le mode semaine (lundi à vendredi)
         for ($i = 0; $i < 5; $i++) {
             $html .= '<div class="day_name">' . $days[$i] . '</div>';
@@ -156,7 +149,7 @@ class Calendar
     {
         $html = '';
         $html .= '<div class="start">';
-        $html .= '<span>' . date('H:i', strtotime($event[4][5])) . '</span>';
+        $html .= '<span>' . date('H:i', strtotime($event[4][4])) . '</span>';
         $html .= '</div>';
         $html .= '<div class="title">';
         $html .= '<span>' . $event[0] . '</span>';

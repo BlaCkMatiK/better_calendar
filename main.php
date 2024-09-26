@@ -9,6 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="public/css/login.css">
     <link rel="stylesheet" href="public/css/root.css">
+    <link rel="shortcut icon" href="/public/img/favicon-32x32.png" type="image/x-icon">
     <meta https-equiv="X-Frame-Options" content="DENY">
 </head>
 
@@ -52,8 +53,7 @@ if (!isset($_SESSION['csrf_token'])) {
                     <br>
                 </form>
 
-                <button id="password-toggle" class="noselect password-toggle"
-                    onclick="togglePasswordVisibility()">Afficher
+                <button id="password-toggle" class="noselect password-toggle" onclick="togglePasswordVisibility()">Afficher
                     le
                     mot de passe</button>
                 <br><br><br><br>

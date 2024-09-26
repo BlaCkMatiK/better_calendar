@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="noindex, nofollow" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="shortcut icon" href="/public/img/favicon-32x32.png" type="image/x-icon">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" />
@@ -142,11 +143,13 @@ function afficherMaterielEmprunte($pdo)
         echo '    <div class="content_right_hardware_list_user">';
         echo '        <strong>Emprunté par : </strong>' . htmlspecialchars($row['prenom']) . ' ' . htmlspecialchars($row['nom']);
         echo '    </div>';
-        echo '    <form action="controller/return_material_controller.php" method="post" style="display:inline;">';
-        echo '        <input type="hidden" name="hardware_id" value="' . htmlspecialchars($row['hardware_id']) . '">'; // Utiliser l'alias
-        echo '        <input type="hidden" name="user_id" value="' . htmlspecialchars($row['user_id']) . '">'; // Utiliser l'alias
-        echo '        <button type="submit" class="content_right_hardware_return">Rendre</button>';
-        echo '    </form>';
+        if ($_SESSION['role'] == 'Admin') {
+            echo '    <form action="controller/return_material_controller.php" method="post" style="display:inline;">';
+            echo '        <input type="hidden" name="hardware_id" value="' . htmlspecialchars($row['hardware_id']) . '">'; // Utiliser l'alias
+            echo '        <input type="hidden" name="user_id" value="' . htmlspecialchars($row['user_id']) . '">'; // Utiliser l'alias
+            echo '        <button type="submit" class="content_right_hardware_return">Rendre</button>';
+            echo '    </form>';
+        }
         echo '</div>';
     }
 }
@@ -230,8 +233,8 @@ function afficherFormulaireEmprunt($pdo)
                 <i class="bi bi-person-circle"></i>
             </button>
             <a href="/"><button class="btn btn-outline-light d-flex align-items-center">
-                <i class="bi bi-house"></i>
-            </button></a>
+                    <i class="bi bi-house"></i>
+                </button></a>
         </div>
     </div>
 
@@ -242,10 +245,10 @@ function afficherFormulaireEmprunt($pdo)
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel"><?php if (isset($_SESSION['prenom']) && isset($_SESSION['nom'])) {
-                        echo ($_SESSION['prenom'] . ' ' . $_SESSION['nom']);
-                    } else {
-                        echo "l'utilisateur";
-                    } ?></h5>
+                                                                        echo ($_SESSION['prenom'] . ' ' . $_SESSION['nom']);
+                                                                    } else {
+                                                                        echo "l'utilisateur";
+                                                                    } ?></h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -285,8 +288,7 @@ function afficherFormulaireEmprunt($pdo)
 
                     const data = {
                         labels: categories,
-                        datasets: [
-                            {
+                        datasets: [{
                                 label: 'Emprunté',
                                 data: emprunte,
                                 backgroundColor: '#da4759',
@@ -294,7 +296,7 @@ function afficherFormulaireEmprunt($pdo)
                             {
                                 label: 'Disponible',
                                 data: disponible,
-                                backgroundColor: '#fad053cb', 
+                                backgroundColor: '#fad053cb',
                             },
                         ]
                     };
