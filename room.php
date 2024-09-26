@@ -19,11 +19,7 @@
 </head>
 <?php
 
-error_reporting(E_ALL);
 
-// Activer l'affichage des erreurs
-ini_set('display_errors', 0);
-ini_set('display_startup_errors', 0);
 // ---------------------------------------------------------
 // Sécuriser les cookies de session
 ini_set('session.cookie_httponly', '1');
@@ -156,11 +152,11 @@ function afficherFormulaireReservationSalle($pdo)
 {
     // Requête SQL pour récupérer la liste des salles qui ne sont pas encore réservées
     $sql_rooms = "
-        SELECT r.id, r.room_number, r.capacity 
-        FROM rooms r 
-        WHERE r.id NOT IN (SELECT rr.room FROM reservations_room rr)
-        ORDER BY r.capacity
-    ";
+    SELECT r.id, r.room_number, r.capacity 
+    FROM rooms r 
+    WHERE r.id NOT IN (SELECT rr.room FROM reservations_room rr)
+    ORDER BY r.room_number
+";
     $stmt_rooms = $pdo->prepare($sql_rooms);
     $stmt_rooms->execute();
 
@@ -180,7 +176,7 @@ function afficherFormulaireReservationSalle($pdo)
 
     // Affichage des salles sans tri par capacité
     while ($row = $stmt_rooms->fetch(PDO::FETCH_ASSOC)) {
-        echo '                <option value="' . htmlspecialchars($row['id']) . '">Salle ' . htmlspecialchars($row['room_number']) . '</option>';
+        echo '                <option value="' . htmlspecialchars($row['id']) . '">Salle : ' . htmlspecialchars($row['room_number']) . ' - Capacitée :' . htmlspecialchars($row['capacity']) . '</option>';
     }
 
     echo '            </select>';
@@ -209,7 +205,6 @@ function afficherFormulaireReservationSalle($pdo)
 
 <body>
     <div class="header_navigation">
-        <!-- <div class="box_button_left"><img class="logo_epsi" src="public/img/logo.png" alt=""></div> -->
         <div class="box_button_left"><a href="/index"><img class="logo_epsi" src="public/img/epsi.svg" alt=""></a>
         </div>
         <div class="box_semaine_spinner">
@@ -217,29 +212,35 @@ function afficherFormulaireReservationSalle($pdo)
         </div>
         <div class="box_button_right">
             <button class="btn btn-outline-light d-flex align-items-center" data-bs-toggle="modal"
-                data-bs-target="#myModal">
-
+                data-bs-target="#Modal">
                 <i class="bi bi-person-circle"></i>
             </button>
+            <a href="/"><button class="btn btn-outline-light d-flex align-items-center">
+                    <i class="bi bi-house"></i>
+                </button></a>
         </div>
     </div>
-    <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="Modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel"><?php if (isset($_SESSION['prenom']) && isset($_SESSION['nom'])) {
-                        echo ($_SESSION['prenom'] . ' ' . $_SESSION['nom']);
-                    } else {
-                        echo "l'utilisateur";
-                    } ?></h5>
+                    <h5 class="modal-title" id="exampleModalLabel">
+                        <?php
+                        if (isset($_SESSION['prenom']) && isset($_SESSION['nom'])) {
+                            echo ($_SESSION['prenom'] . ' ' . $_SESSION['nom']);
+                        } else {
+                            echo "l'utilisateur";
+                        }
+                        ?>
+                    </h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+
                 </div>
                 <div class="modal-body">
                     <h6>Rôle : <?= $_SESSION['role'] ?></h6>
                     <h6>Email : <?= $_SESSION['pseudo_user'] ?></h6>
                 </div>
                 <div class="modal-footer">
-                    <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Retour</button> -->
                     <a href="controller/disconect_controller.php" class="disconnect_a"><button
                             class="disconnect_button">Déconnexion</button></a>
                 </div>
@@ -260,14 +261,14 @@ function afficherFormulaireReservationSalle($pdo)
         <div class="content_center">
             <?php afficherFormulaireReservationSalle($pdo); ?>
 
-    </div>
-    <div class="content_right">
-        <div class="content_right_rooms_list">
-            <h3 class="content_right_rooms_list_title">Liste des salles réservées</h3>
-            <div class="content_right_rooms_box">
-                <?php afficherRoomEmpruntee($pdo); ?>
+        </div>
+        <div class="content_right">
+            <div class="content_right_rooms_list">
+                <h3 class="content_right_rooms_list_title">Liste des salles réservées</h3>
+                <div class="content_right_rooms_box">
+                    <?php afficherRoomEmpruntee($pdo); ?>
+                </div>
             </div>
         </div>
-    </div>
     </div>
 </body>

@@ -145,7 +145,7 @@ $stmt = $pdo->query($sql);
 
 if ($stmt->rowCount() > 0) {
     while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-        $calendar->add_event($row['name'], $row['start_time'], 1, $row['color'], [$row['room'], $row['lastname'], $row['lieu'], $row['type'], $row['start_time'], $row['end_time']]);
+        $calendar->add_event($row['name'], $row['start_time'], 1, $row['color'], [$row['room'], $row['lastname'], $row['lieu'], $row['type'], $row['start_time'], $row['end_time'], $row['group_id']]);
     }
 }
 
@@ -215,10 +215,15 @@ if ($stmt->rowCount() > 0) {
                 </form>
             </div>
         </div>
-        <button class="btn btn-outline-light d-flex align-items-center" style="margin-right: 20px;" data-bs-toggle="modal"
-            data-bs-target="#ModalProfil">
-            <i class="bi bi-person-circle"></i>
-        </button>
+        <div class="home">
+            <button class="btn btn-outline-light d-flex align-items-center" data-bs-toggle="modal"
+                data-bs-target="#ModalProfil">
+                <i class="bi bi-person-circle"></i>
+            </button>
+            <a href="/"><button class="btn btn-outline-light d-flex align-items-center">
+                    <i class="bi bi-house"></i>
+                </button></a>
+        </div>
     </div>
     </div>
     <div class="content_global">
@@ -262,12 +267,12 @@ if ($stmt->rowCount() > 0) {
                         <button type="button" class="btn-close" style="background-color: white;" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body" style="background-color: var(--color-violet-epsi);">
-                        <form method="POST" action="add_event.php" class="add-event-form">
+                        <form method="POST" action="controller/add_event_controller.php" class="add-event-form">
                             <label for="name" class="form-label">Nom du cours:</label>
                             <input type="text" name="name" id="name" required class="form-input"><br>
 
                             <label for="color" class="form-label">Couleur du cours:</label>
-                            <input type="text" name="color" id="color" required class="form-input"><br>
+                            <input type="color" name="color" id="color" required class="form-input"><br>
 
                             <label for="start_time" class="form-label">Heure de début:</label>
                             <input type="datetime-local" name="start_time" id="start_time" required
@@ -317,6 +322,7 @@ if ($stmt->rowCount() > 0) {
         });
     </script>
 </body>
+
 </html>
 <script>
     document.getElementById('view_choice').addEventListener('change', function() {

@@ -104,7 +104,6 @@
     display: none;
     position: absolute;
     padding: 10px;
-    border: 1px solid #ddd;
     z-index: 1;
     background: rgba(2, 2, 2, 0.495);
     box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
@@ -182,3 +181,13 @@ body {
     border-bottom: 1px solid #ebebeb;
     color: white;
 }
+
+.home {
+    display:flex; margin-right: 20px
+}
+
+@media only screen and (max-width: 600px){
+    .home {
+        margin-right: unset!important;
+    }
+  }

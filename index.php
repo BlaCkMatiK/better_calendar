@@ -21,11 +21,7 @@
 </head>
 <?php
 
-error_reporting(E_ALL);
 
-// Activer l'affichage des erreurs
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
 // ---------------------------------------------------------
 // Sécuriser les cookies de session
 ini_set('session.cookie_httponly', '1');
@@ -47,36 +43,43 @@ if (!isset($_SESSION['login_status']) || $_SESSION['login_status'] != true) {
         </div>
         <div class="box_button_right">
             <button class="btn btn-outline-light d-flex align-items-center" data-bs-toggle="modal"
-                data-bs-target="#myModal">
+                data-bs-target="#Modal">
+                <i class="bi bi-person-circle">
+                </i>
+            </button>
+            <a href="/">
+                <button class="btn btn-outline-light d-flex align-items-center">
+                    <i class="bi bi-house">
+                    </i>
+                </button>
+            </a>
 
-                <i class="bi bi-person-circle"></i>
         </div>
     </div>
 
 
 
-    <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="Modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel"><?php if (isset($_SESSION['prenom']) && isset($_SESSION['nom'])) {
-                        echo ($_SESSION['prenom'] . ' ' . $_SESSION['nom']);
-                    } else {
-                        echo "l'utilisateur";
-                    } ?></h5>
+                    <h5 class="modal-title" id="exampleModalLabel">
+                        <?php
+                        if (isset($_SESSION['prenom']) && isset($_SESSION['nom'])) {
+                            echo ($_SESSION['prenom'] . ' ' . $_SESSION['nom']);
+                        } else {
+                            echo "l'utilisateur";
+                        }
+                        ?>
+                    </h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+
                 </div>
                 <div class="modal-body">
                     <h6>Rôle : <?= $_SESSION['role'] ?></h6>
                     <h6>Email : <?= $_SESSION['pseudo_user'] ?></h6>
                 </div>
                 <div class="modal-footer">
-                    <?php if (isset($_SESSION['role']) && $_SESSION['role'] == "Admin"): ?>
-                        <button class="btn btn-primary" style="background-color: var(--color-violet-epsi);"
-                            data-bs-toggle="modal" data-bs-target="#Modal_Add_Event ">
-                            Ajouter un
-                            cours</button>
-                    <?php endif; ?>
                     <a href="controller/disconect_controller.php" class="disconnect_a"><button
                             class="disconnect_button">Déconnexion</button></a>
                 </div>
@@ -85,14 +88,12 @@ if (!isset($_SESSION['login_status']) || $_SESSION['login_status'] != true) {
     </div>
 
     <div class="content">
-        <div class="content_left"> </div>
         <div class="content_center_index">
             <a class="btn btn-block custom-btn b-none" href="/week">Calendrier</a>
             <a class="btn btn-block custom-btn b-none" href="/hardware">Hardware</a>
             <a class="btn btn-block custom-btn b-none" href="/room">Salles</a>
-            <a class="btn btn-block custom-btn b-none" href="/files">Fichiers</a>
+            <a class="btn btn-block custom-btn b-none" href="https://nextcloud.romain-igounet.fr">Fichiers</a>
         </div>
-        <div class="content_right"></div>
     </div>
 </body>
 
@@ -100,19 +101,20 @@ if (!isset($_SESSION['login_status']) || $_SESSION['login_status'] != true) {
     .b-none {
         border: none;
     }
-    
+
+    .content {
+        justify-content: center;
+    }
+
     .content_center_index {
         height: calc(100vh - 80px);
-        width: 33%;
-        display: flex;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
     }
-    .content_center_index a{
-        width: 33%;
-        display: flex;
+
+    .content_center_index a {
         display: flex;
         flex-direction: column;
         justify-content: center;

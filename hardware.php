@@ -21,11 +21,7 @@
 </head>
 <?php
 
-error_reporting(E_ALL);
 
-// Activer l'affichage des erreurs
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
 // ---------------------------------------------------------
 // Sécuriser les cookies de session
 ini_set('session.cookie_httponly', '1');
@@ -230,16 +226,18 @@ function afficherFormulaireEmprunt($pdo)
         </div>
         <div class="box_button_right">
             <button class="btn btn-outline-light d-flex align-items-center" data-bs-toggle="modal"
-                data-bs-target="#myModal">
-
+                data-bs-target="#Modal">
                 <i class="bi bi-person-circle"></i>
             </button>
+            <a href="/"><button class="btn btn-outline-light d-flex align-items-center">
+                <i class="bi bi-house"></i>
+            </button></a>
         </div>
     </div>
 
 
 
-    <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="Modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">

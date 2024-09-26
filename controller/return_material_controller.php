@@ -4,7 +4,6 @@ include("../config/database.php");
 
 function rendreMateriel($pdo, $hardware_id, $user_id)
 {
-    // Requête SQL pour supprimer la réservation
     $sql = "DELETE FROM reservations_hardware WHERE hardware_id = :hardware_id AND user = :user_id";
 
     $stmt = $pdo->prepare($sql);

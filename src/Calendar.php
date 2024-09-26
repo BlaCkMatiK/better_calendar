@@ -1,8 +1,4 @@
 <?php
-
-// echo $_SESSION['mois_selectionnee'];
-// echo $_SESSION['semaine_selectionnee'];
-// echo $_SESSION['view_method'];
 class Calendar
 {
     public $active_year, $active_month, $active_day, $active_week, $format;
@@ -26,16 +22,10 @@ class Calendar
     {
         $days = ['Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam', 'Dim'];
 
-        // Affichage du header
         $html = '<div class="calendar">';
         $html .= '<div class="header">';
-        // $html .= '<div class="month-year">';
-        // $html .= date('F Y', strtotime($this->active_year . '-' . $this->active_month . '-01'));
-        // $html .= '</div>';
         $html .= '</div>';
-
         $html .= '<div class="days">';
-
         if ($this->format === 'week') {
             // Mode semaine : affichage des jours de lundi à vendredi
             $html .= $this->render_week_view($days);
@@ -115,24 +105,26 @@ class Calendar
         $selected = ($day == $this->active_day) ? ' selected' : '';
         $html = '<div class="day_num' . $selected . '">';
         $html .= '<span>' . $day . '</span>';
-        
+
         // Affichage des événements associés à ce jour
         foreach ($this->events as $event) {
             for ($d = 0; $d <= ($event[2] - 1); $d++) {
                 if (date('Y-m-d', strtotime($this->active_year . '-' . $this->active_month . '-' . $day . ' -' . $d . ' day')) == date('Y-m-d', strtotime($event[1]))) {
-                    $html .= '<div class="event" style="background-color: #' . $event[3] . '">';
+                    $html .= '<div class="event" style="background-color: ' . $event[3] . '">';
                     switch ($event[4][3]) {
                         case "Présentiel":
-                            $html .= '<i class="fa-solid fa-school"></i>';
+                            $html .= '<i class="fa-solid fa-school" title="Présentiel"></i>';
                             break;
                         case "E-Learning":
-                            $html .= '<i class="fa-solid fa-globe"></i>';
+                            $html .= '<i class="fa-solid fa-globe" title="E-Learning"></i>';
                             break;
                         case "Distanciel":
-                            $html .= '<i class="fa-solid fa-desktop"></i>';
+                            $html .= '<i class="fa-solid fa-desktop" title="Distanciel"></i>';
                             break;
+                        default:
+                            $html .= '';
                     }
-                    
+
                     if ($this->format != 'week') {
                         $html .= $this->render_event_month($event);
                     } else {
@@ -149,11 +141,6 @@ class Calendar
     private function render_event_month($event)
     {
         $html = '';
-        // $words = explode(' ', $event[0]);
-        // foreach ($words as $word) {
-        //     $short = substr($word, 0, 4);
-        //     $html .= $short . " ";
-        // }
         $html .= '<div class="event_content">';
         $html .= '<span> Salle : ' . $event[4][0] . '</span>';
         $html .= '<span> Prof : ' . $event[4][1] . '</span>';
@@ -180,10 +167,25 @@ class Calendar
         $html .= '</div>';
         $html .= '<div class="event_content_footer">';
         // $html .= '<span class="type">' . $event[4][3] . '</span>';
-        $html .= '<span class="room">' . $event[4][0] . substr($event[4][2], 0, 1) . '</span>';
+        $html .= '<span class="room">' . $event[4][0] . ' - ' . substr($event[4][2], 0, 1) . '</span>';
         $html .= '</div>';
         $html .= '<div class="end">';
         $html .= '<span>' . date('H:i', strtotime($event[4][5])) . '</span>';
+        $html .= '<span>';
+
+        // $html .= var_dump($event);
+        switch ($event[4][6]) {
+            case "3":
+                $html .= '<i class="fa-solid fa-code" title="DEV"></i>';
+                break;
+            case "4":
+                $html .= '<i class="fa-solid fa-network-wired" title="INFRA"></i>';
+                break;
+            default:
+                $html .= '';
+        }
+
+        $html .= '</span>';
         $html .= '</div>';
 
         return $html;

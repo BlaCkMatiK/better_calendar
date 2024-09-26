@@ -1,18 +1,16 @@
 <?php
 header('Content-Type: application/json');
 
-// Sécurisation des cookies de session
 ini_set('session.cookie_secure', '1');
 ini_set('session.cookie_httponly', '1');
 
-// Démarrage de la session
 session_start();
 
 require_once 'config/database.php';
 
 // Helper function to generate API token
 function generateApiToken() {
-    return bin2hex(random_bytes(32)); // Generates a 64-character token
+    return bin2hex(random_bytes(32));
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -32,7 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Traitez la connexion
     $email = htmlspecialchars($data['email']);
     $password = htmlspecialchars($data['password']);
-    $hashed_password = hash('sha256', $password); // Hachage du mot de passe
+    $hashed_password = hash('sha256', $password);
 
     // Préparez la requête SQL pour vérifier l'utilisateur
     $stmt = $conn_workshop_mysqli->prepare("SELECT * FROM users WHERE email=? AND password=?");
@@ -48,9 +46,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $id_utilisateur = htmlspecialchars($row['id_utilisateur']);
         $role = $row['role'];
         $role_id = $row['role_id'];
-
-        // var_dump($result);
-        // die();
 
         // Régénération de l'ID de session pour des raisons de sécurité
         session_regenerate_id(true);

@@ -5,29 +5,19 @@
 
 .custom-btn {
     width: 200px;
-    /* Ajuste cette valeur pour la largeur que tu veux */
     height: 60px;
-    /* Ajuste cette valeur pour la hauteur que tu veux */
     font-size: 1.5rem;
-    /* Ajuste cette valeur pour la taille du texte */
     margin-bottom: 15px;
-    /* Espacement entre les boutons */
     background-color: var(--color-dark-yellow);
-    /* Couleur de fond */
     border-color: var(--color-violet-epsi);
-    /* Pour garder le contour de la même couleur */
     color: var(--color-violet-epsi);
-    /* Pour garder le contour de la même couleur */
 }
 
 .custom-btn:hover {
 
     background-color: var(--color-violet-epsi);
-    /* Couleur de fond */
     border-color: var(--color-dark-yellow);
-    /* Pour garder le contour de la même couleur */
     color: var(--color-dark-yellow);
-    /* Pour garder le contour de la même couleur */
 }
 
 .header_navigation {
@@ -109,7 +99,6 @@
     height: calc(100vh - 80px);
     width: 33%;
     display: flex;
-    display: flex;
     justify-content: center;
     align-items: center;
 }
@@ -119,7 +108,6 @@
     height: calc(100vh - 80px);
     width: 33%;
     display: flex;
-    display: flex;
     justify-content: center;
     align-items: center;
 }
@@ -127,7 +115,6 @@
 .content_right {
     height: calc(100vh - 80px);
     width: 33%;
-    display: flex;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -375,10 +362,6 @@
 
 
 @media (max-width: 1568px) {
-    /* * {
-        background-color: red;
-    } */
-
     #materielChart {
         display: none !important;
     }
@@ -412,7 +395,6 @@
 ::-webkit-scrollbar-thumb {
     background-color: var(--color-light-yellow);
     border-radius: 5px;
-    /* border: 2px solid var(--color-violet-epsi); */
 }
 
 ::-webkit-scrollbar-thumb:hover {
@@ -440,8 +422,6 @@
     .content_center {
         height: calc(100vh - 80px);
         width: 100%;
-        /*  */
-        display: flex;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -450,8 +430,6 @@
     .content_left {
         height: calc(100vh - 80px);
         width: 100%;
-        /*  */
-        display: flex;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -460,8 +438,6 @@
     .content_right {
         height: calc(100vh - 80px);
         width: 100%;
-        /*  */
-        display: flex;
         display: flex;
         justify-content: center;
         align-items: center;

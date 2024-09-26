@@ -1,9 +1,13 @@
 <?php
+
+
+
+
 $config = [
     'host' => $_ENV['MYSQL_HOST'],
     'dbname' => 'workshop',
-    'username' => $_ENV['MYSQL_USER'], // Remplacez par votre nom d'utilisateur MySQL
-    'password' => $_ENV['MYSQL_PASSWORD'], // Remplacez par votre mot de passe MySQL
+    'username' => $_ENV['MYSQL_USER'],
+    'password' => $_ENV['MYSQL_PASSWORD'],
 ];
 
 $dsn = 'mysql:host=' . $config['host'] . ';dbname=' . $config['dbname'] . ';charset=utf8';
@@ -26,6 +30,56 @@ try {
 }
 $conn_workshop_mysqli = new mysqli($db_host, $db_user_user, $db_password_user, "workshop");
 
+function sanitizeInput($input)
+{
+    $charsToRemove = [
+        '<script>',
+        '</script>',
+        '<style>',
+        '</style>',
+        '<iframe>',
+        '</iframe>',
+        '<object>',
+        '</object>',
+        '<embed>',
+        '</embed>',
+        '<applet>',
+        '</applet>',
+        '<meta>',
+        '</meta>',
+        '</img>',
+        '<img>',
+        '<link>',
+        '</link>',
+        '<',
+        '>',
+        '"',
+        "'",
+        '/',
+        '\\',
+        '<?php',
+        '?>',
+        '{',
+        ']',
+        '}',
+        '[',
+        ';',
+        '<br>',
+        '*',
+        'http',
+        'https',
+        'javascript:',
+        'vbscript:',
+        'expression(',
+        'onerror=',
+        'onload=',
+        '<br>',
+        '<!--',
+        '-->'
+    ];
+
+    return str_replace($charsToRemove, '', $input);
+}
 
 
 ?>

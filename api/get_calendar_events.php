@@ -10,7 +10,7 @@ if (!isset($headers['Authorization'])) {
     exit();
 }
 
-$token = str_replace('Bearer ', '', $headers['Authorization']);  // Extraction du token
+$token = str_replace('Bearer ', '', $headers['Authorization']);
 
 // Vérification du token dans la base de données
 $stmt = $pdo->prepare("SELECT id FROM users WHERE api_token = ?");

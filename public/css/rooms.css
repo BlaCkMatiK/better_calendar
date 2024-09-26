@@ -97,7 +97,6 @@
     width: 33%;
     
     display: flex;
-    display: flex;
     justify-content: center;
     align-items: baseline;
     margin-top: 40px;
@@ -107,7 +106,6 @@
     height: calc(100vh - 80px);
     width: 33%;
     
-    display: flex;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -122,7 +120,6 @@
     height: calc(100vh - 80px);
     width: 33%;
     
-    display: flex;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -159,7 +156,7 @@
 .content_right_rooms_box {
     border-radius: 10px;
     overflow-y: auto;
-    max-height: calc(100% - 100px);
+    max-height: calc(100% - 140px);
     width: 95%;
     display: flex;
     flex-direction: column;
@@ -269,9 +266,9 @@
 }
 
 .content_left_rooms_box {
-    border-radius: 10px;
+    border-radius: 20px;
     overflow-y: auto;
-    max-height: calc(100% - 100px);
+    max-height: calc(100% - 140px);
     width: 95%;
     display: flex;
     flex-direction: column;
@@ -369,7 +366,7 @@
     padding: 13px;
     margin-left: 10px;
     border: none;
-    width: 230px;
+    width: 250px;
     border-radius: 10px;
 }
 
@@ -456,8 +453,7 @@
     .content_center {
         height: calc(100vh - 80px);
         width: 100%;
-        /*  */
-        display: flex;
+        
         display: flex;
         justify-content: center;
         align-items: center;
@@ -466,8 +462,7 @@
     .content_left {
         height: calc(100vh - 80px);
         width: 100%;
-        /*  */
-        display: flex;
+        
         display: flex;
         justify-content: center;
         align-items: center;
@@ -475,8 +470,7 @@
     .content_right {
         height: calc(100vh - 80px);
         width: 100%;
-        /*  */
-        display: flex;
+        
         display: flex;
         justify-content: center;
         align-items: center;
@@ -485,3 +479,5 @@
         display: none;
     }
 }
+
+

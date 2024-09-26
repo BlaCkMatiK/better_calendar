@@ -35,7 +35,8 @@ if (isset($_POST['valider'])) {
                         $result = $stmt->get_result();
 
                         if ($result->num_rows != 1) {
-                            $random_sleep = rand(1, 2);
+                            $random_sleep = random_int(1, 2);
+                            sleep($random_sleep);
         
                             $_SESSION['error'] = "Mail ou mot de passe incorrect";
                             unset($_SESSION['csrf_token']);
@@ -76,11 +77,13 @@ if (isset($_POST['valider'])) {
         
                             $_SESSION['error'] = "Vous êtes connecté avec succès $Pseudo ! , redirection en cours";
 
-                            $random_sleep = rand(1, 2);
+                            $random_sleep = random_int(1, 2);
                             sleep($random_sleep);
+
+                            
                             header("Referrer-Policy: origin");
                             http_response_code(200);
-                            header("Location: $domain_name/week");
+                            header("Location: /");
 
 
                         }
@@ -89,7 +92,10 @@ if (isset($_POST['valider'])) {
                         exit();
                     }
                 } else {
-                    $random_sleep = rand(1, 3);
+                    $random_sleep = random_int(1, 2);
+    
+                    // Introduce the delay
+                    sleep($random_sleep);
 
                     // Adresse e-mail invalide, afficher un message d'erreur
                     header('HTTP/1.1 401 Unauthorized');

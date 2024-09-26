@@ -34,7 +34,9 @@
 @media only screen and (max-width: 600px) {
     .calendar .days .day_num .event {
      aspect-ratio: 1 / 1;
-     /* height: 800px; */
+    }
+    .home {
+        margin-right: unset!important;
     }
   }
 
@@ -42,6 +44,9 @@
     display: flex;
 }
 
+.home {
+    display:flex; margin-right: 20px
+}
 
 .modal-dialog {
     position: fixed;
