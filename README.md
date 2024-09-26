@@ -88,14 +88,14 @@ class MainActivity : AppCompatActivity() {
 ### 1. Cloner le projet
 
 ```bash
-git clone https://votre-repo.git
+git clone https://github.com/BlaCkMatiK/better_calendar.git
 ```
 
 ### 2. Configurer la base de données
 
 - Créez une base de données MySQL via **phpMyAdmin** ou la ligne de commande :
   ```sql
-  CREATE DATABASE better_calendar;
+  CREATE DATABASE workshop;
   ```
 - Importez le schéma SQL fourni pour configurer les tables nécessaires.
 
@@ -105,7 +105,7 @@ Créez un fichier `.env` pour stocker les identifiants de connexion à la base d
 
 ```bash
 DB_HOST=localhost
-DB_DATABASE=better_calendar
+DB_DATABASE=workshop
 DB_USERNAME=utilisateur
 DB_PASSWORD=motdepasse
 ```

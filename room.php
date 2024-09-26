@@ -165,18 +165,9 @@ function afficherFormulaireReservationSalle($pdo)
     $stmt_rooms->execute();
 
     // Requête SQL pour récupérer la liste des utilisateurs
-    $sql_users = "SELECT id, prenom, nom FROM users";
+    $sql_users = "SELECT id, prenom, nom FROM users ";
     $stmt_users = $pdo->prepare($sql_users);
     $stmt_users->execute();
-
-    // Structure pour stocker les salles par capacité
-    $rooms_by_capacity = [];
-
-    // Remplissage de la structure avec les salles
-    while ($row = $stmt_rooms->fetch(PDO::FETCH_ASSOC)) {
-        $capacity = $row['capacity'];
-        $rooms_by_capacity[$capacity][] = $row;
-    }
 
     echo '<div class="content_center_reservation_form">';
     echo '    <h2 class="content_center_form_title">Réservation de Salle</h2>';
@@ -187,13 +178,9 @@ function afficherFormulaireReservationSalle($pdo)
     echo '            <label class="content_center_form_label" for="room_id"><strong>Sélectionnez la Salle :</strong></label><br>';
     echo '            <select class="content_center_form_select" name="room_id" id="room_id" required>';
 
-    // Affichage des optgroups pour chaque catégorie de capacité
-    foreach ($rooms_by_capacity as $capacity => $rooms) {
-        echo '                <optgroup label="Capacité: ' . htmlspecialchars($capacity) . '">';
-        foreach ($rooms as $room) {
-            echo '                    <option value="' . htmlspecialchars($room['id']) . '">Salle ' . htmlspecialchars($room['room_number']) . '</option>';
-        }
-        echo '                </optgroup>';
+    // Affichage des salles sans tri par capacité
+    while ($row = $stmt_rooms->fetch(PDO::FETCH_ASSOC)) {
+        echo '                <option value="' . htmlspecialchars($row['id']) . '">Salle ' . htmlspecialchars($row['room_number']) . '</option>';
     }
 
     echo '            </select>';
@@ -217,6 +204,7 @@ function afficherFormulaireReservationSalle($pdo)
     echo '    </form>';
     echo '</div>';
 }
+
 ?>
 
 <body>
