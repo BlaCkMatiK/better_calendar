@@ -227,7 +227,7 @@ function afficherFormulaireReservationSalle($pdo)
 <body>
     <div class="header_navigation">
         <!-- <div class="box_button_left"><img class="logo_epsi" src="public/img/logo.png" alt=""></div> -->
-        <div class="box_button_left"><a href="/index.php"><img class="logo_epsi" src="public/img/epsi.svg" alt=""></a>
+        <div class="box_button_left"><a href="/index"><img class="logo_epsi" src="public/img/epsi.svg" alt=""></a>
         </div>
         <div class="box_semaine_spinner">
 

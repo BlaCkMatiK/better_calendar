@@ -23,8 +23,6 @@
 
 </head>
 <?php
-// ---------------------------------------------------------
-// Sécuriser les cookies de session
 ini_set('session.cookie_httponly', '1');
 ini_set('session.cookie_secure', '1');
 session_start();
@@ -33,10 +31,6 @@ if (!isset($_SESSION['login_status']) || $_SESSION['login_status'] != true) {
     header('Location: main');
 }
 
-
-// ---------------------------------------------------------
-
-// INITIALISER LES VARIALES 
 if (!isset($_SESSION['semaine_selectionnee'])) {
     $date = new DateTime();
     $_SESSION['semaine_selectionnee'] = $date->format("W"); // Numéro de la semaine actuelle
@@ -47,7 +41,6 @@ if (!isset($_SESSION['mois_selectionnee'])) {
     $_SESSION['mois_selectionnee'] = $date->format("n"); // Numéro du mois actuel (1 à 12)
 }
 
-
 if (!isset($_SESSION['view_method'])) {
     $_SESSION['view_method'] = "week";
 }
@@ -57,51 +50,34 @@ if (!isset($_SESSION['date_selectionnee'])) {
 }
 function generateDropdown(PDO $pdo, string $label, string $table, string $column, string $selectName): string
 {
-    // Prepare the query
     $query = 'SELECT id, ' . $column . ' FROM ' . $table;
     $stmt = $pdo->prepare($query);
     $stmt->execute();
 
-    // Correct closing of the label tag
     $dropdown = '<label for="' . $selectName . '" class="form-label">' . htmlspecialchars($label) . '</label>';
 
-    // Start building the HTML for the dropdown with a specific class
     $dropdown .= "<select name=\"$selectName\" class=\"form-input\">\n";
     $dropdown .= "<option value=''> Choisir " . htmlspecialchars($label) . "</option>";
 
-    // Loop through each row and create an option element
     while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
         $dropdown .= '<option value="' . htmlspecialchars($row['id']) . '">' . htmlspecialchars($row[$column]) . "</option>\n";
     }
 
-    // Close the select tag
     $dropdown .= "</select>\n";
 
     return $dropdown;
 }
 
-// $annee_actuelle = date('Y');
-
-// ---------------------------------------------------------
-
-
-
-
-
-// Gestion de la navigation entre les semaines (suivant, précédent, ou via le select)
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_SESSION['pseudo_user'])) {
 
-        // Si l'utilisateur a changé la semaine via le sélecteur
         if (isset($_POST['mettre_a_jour_selection'])) {
             if ($_SESSION['view_method'] === 'week') {
-                // Vérification que 'semaine' existe dans les données POST
                 if (isset($_POST['semaine']) && is_numeric($_POST['semaine'])) {
                     $semaine_courante = (int) $_POST['semaine'];
                     $_SESSION['semaine_selectionnee'] = $semaine_courante;
                 }
             } else {
-                // Vérification que 'mois' existe dans les données POST
                 if (isset($_POST['mois']) && is_numeric($_POST['mois'])) {
                     $mois_courant = (int) $_POST['mois'];
                     $_SESSION['mois_selectionnee'] = $mois_courant;
@@ -109,21 +85,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             }
         }
 
-
         if (isset($_POST['view_choice'])) {
-            // Vérifiez que la valeur est soit 'month' soit 'week'
             if ($_POST['view_choice'] === 'month' || $_POST['view_choice'] === 'week') {
                 $_SESSION['view_method'] = $_POST['view_choice'];
             }
         }
     } else {
-        // Si l'utilisateur n'est pas authentifié, on renvoie une erreur 401
         header('HTTP/1.1 401 Unauthorized');
         exit();
     }
 }
-
-// $semaine_selectionnee = $_SESSION['semaine_selectionnee'];
 
 echo $_SESSION['view_method'] === 'week'
     ? '<link href="public/css/calendar_week.css" rel="stylesheet" type="text/css">'
@@ -144,7 +115,6 @@ if (!isset($_POST['semaine'])) {
     $post_semaine = $_POST['semaine'];
 }
 
-
 $_SESSION['date_selectionnee'] = date('Y-m-d', strtotime(date('Y') . $post_mois . date('d')));
 
 $week = $post_semaine;
@@ -160,7 +130,6 @@ if (isset($_SESSION['role']) && $_SESSION['role']) {
     $where = '';
 }
 
-// Construire la requête SQL
 $sql = '
     SELECT courses.*, teachers.lastname, places.name AS lieu, types.name AS type
     FROM courses
@@ -179,24 +148,19 @@ if ($stmt->rowCount() > 0) {
         $calendar->add_event($row['name'], $row['start_time'], 1, $row['color'], [$row['room'], $row['lastname'], $row['lieu'], $row['type'], $row['start_time'], $row['end_time']]);
     }
 }
-// var_dump($_SESSION);
-// die();
 
 ?>
 
 <body>
     <div class="header_navigation">
-        <!-- <div class="box_button_left"><img class="logo_epsi" src="public/img/logo.png" alt=""></div> -->
         <div class="box_button_left"><a href="/index.php"><img class="logo_epsi" src="public/img/epsi.svg" alt=""></div></a>
         <div class="date_select">
             <div class="box_semaine_spinner">
                 <form class="form_navigation_semaine" id="form_navigation_semaine" action="" method="post">
 
                     <?php if ($_SESSION['view_method'] === 'week'): ?>
-                        <!-- Sélecteur de semaine -->
                         <select name="semaine" id="semaine" class="selecteur_semaine">
                             <?php
-                            // Générer les options de semaines
                             echo '<optgroup label="' . $annee_actuelle . '">';
                             for ($i = 1; $i <= 52; $i++) {
                                 $date_debut = new DateTime();
@@ -211,10 +175,8 @@ if ($stmt->rowCount() > 0) {
                         </select>
 
                     <?php elseif ($_SESSION['view_method'] === 'month'): ?>
-                        <!-- Sélecteur de mois -->
                         <select name="mois" id="mois" class="selecteur_mois">
                             <?php
-                            // Générer les options de mois
                             $mois = [
                                 '01' => 'Janvier',
                                 '02' => 'Février',
@@ -237,15 +199,11 @@ if ($stmt->rowCount() > 0) {
                         </select>
                     <?php endif; ?>
 
-                    <!-- Bouton pour mettre à jour (invisible, géré par JS) -->
                     <input type="submit" name="mettre_a_jour_selection" id="mettre_a_jour_selection" value="Mettre à jour"
                         class="btn_mettre_a_jour_semaine" style="display: none;">
-
                 </form>
             </div>
             <div class="box_button_right">
-
-
                 <form action="" method="POST">
                     <select name="view_choice" id="view_choice" class="view_choice">
                         <option value="month" <?php echo $_SESSION['view_method'] === 'month' ? 'selected' : ''; ?>>Mois
@@ -253,27 +211,20 @@ if ($stmt->rowCount() > 0) {
                         <option value="week" <?php echo $_SESSION['view_method'] === 'week' ? 'selected' : ''; ?>>Semaine
                         </option>
                     </select>
-
                     <input type="submit" name="choice_view" id="choice_view" style="display: none;">
                 </form>
             </div>
         </div>
-
         <button class="btn btn-outline-light d-flex align-items-center" style="margin-right: 20px;" data-bs-toggle="modal"
             data-bs-target="#ModalProfil">
-
             <i class="bi bi-person-circle"></i>
         </button>
     </div>
-
     </div>
     <div class="content_global">
         <div class="content">
             <?= $calendar ?>
         </div>
-
-
-        <!-- Modal -->
         <div class="modal fade" id="ModalProfil" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -290,7 +241,6 @@ if ($stmt->rowCount() > 0) {
                         <h6>Email : <?= $_SESSION['pseudo_user'] ?></h6>
                     </div>
                     <div class="modal-footer">
-                        <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Retour</button> -->
                         <?php if (isset($_SESSION['role']) && $_SESSION['role'] == "Admin"): ?>
                             <button class="btn btn-primary" style="background-color: var(--color-violet-epsi);"
                                 data-bs-toggle="modal" data-bs-target="#Modal_Add_Event ">
@@ -303,7 +253,6 @@ if ($stmt->rowCount() > 0) {
                 </div>
             </div>
         </div>
-        <!-- Modal -->
         <div class="modal fade" id="Modal_Add_Event" tabindex="-1" aria-labelledby="exampleModalLabel"
             aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
             <div class="modal-dialog">
@@ -328,7 +277,6 @@ if ($stmt->rowCount() > 0) {
                             <input type="datetime-local" name="end_time" id="end_time" required class="form-input"><br>
 
                             <?php
-                            // Génération des dropdowns avec les options récupérées de la base de données
                             echo generateDropdown($pdo, 'Lieu', 'places', 'name', 'place');
                             echo generateDropdown($pdo, 'Prof', 'teachers', 'lastname', 'teacher');
                             echo generateDropdown($pdo, 'Type', 'types', 'name', 'type');
@@ -344,11 +292,7 @@ if ($stmt->rowCount() > 0) {
                 </div>
             </div>
         </div>
-
-
-
     </div>
-
     <script>
         document.addEventListener('mousemove', (e) => {
             const hoverDiv = document.querySelector('.event_content');
@@ -373,9 +317,7 @@ if ($stmt->rowCount() > 0) {
         });
     </script>
 </body>
-
 </html>
-
 <script>
     document.getElementById('view_choice').addEventListener('change', function() {
         document.getElementById('choice_view').click();

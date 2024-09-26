@@ -16,16 +16,14 @@
     <link rel="stylesheet" href="public/css/root.css">
     <link rel="stylesheet" href="public/css/rooms.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-
 </head>
 <?php
 
 error_reporting(E_ALL);
 
 // Activer l'affichage des erreurs
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
+ini_set('display_errors', 0);
+ini_set('display_startup_errors', 0);
 // ---------------------------------------------------------
 // Sécuriser les cookies de session
 ini_set('session.cookie_httponly', '1');
@@ -219,16 +217,12 @@ function afficherFormulaireReservationSalle($pdo)
     echo '    </form>';
     echo '</div>';
 }
-
-
-
-
 ?>
 
 <body>
     <div class="header_navigation">
         <!-- <div class="box_button_left"><img class="logo_epsi" src="public/img/logo.png" alt=""></div> -->
-        <div class="box_button_left"><a href="/index.php"><img class="logo_epsi" src="public/img/epsi.svg" alt=""></a>
+        <div class="box_button_left"><a href="/index"><img class="logo_epsi" src="public/img/epsi.svg" alt=""></a>
         </div>
         <div class="box_semaine_spinner">
 
@@ -241,9 +235,6 @@ function afficherFormulaireReservationSalle($pdo)
             </button>
         </div>
     </div>
-
-
-
     <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">

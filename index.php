@@ -19,8 +19,7 @@
 
 
 </head>
-<button>
-    <?php
+<?php
 
 error_reporting(E_ALL);
 
@@ -41,8 +40,8 @@ if (!isset($_SESSION['login_status']) || $_SESSION['login_status'] != true) {
 
 <body>
     <div class="header_navigation">
-        <!-- <div class="box_button_left"><img class="logo_epsi" src="public/img/logo.png" alt=""></div> -->
-        <div class="box_button_left"><a href="/index.php"><img class="logo_epsi" src="public/img/epsi.svg" alt=""></a></div>
+        <div class="box_button_left"><a href="/index"><img class="logo_epsi" src="public/img/epsi.svg" alt=""></a>
+        </div>
         <div class="box_semaine_spinner">
 
         </div>
@@ -51,7 +50,6 @@ if (!isset($_SESSION['login_status']) || $_SESSION['login_status'] != true) {
                 data-bs-target="#myModal">
 
                 <i class="bi bi-person-circle"></i>
-            </button>
         </div>
     </div>
 
@@ -73,13 +71,12 @@ if (!isset($_SESSION['login_status']) || $_SESSION['login_status'] != true) {
                     <h6>Email : <?= $_SESSION['pseudo_user'] ?></h6>
                 </div>
                 <div class="modal-footer">
-                    <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Retour</button> -->
-                        <?php if (isset($_SESSION['role']) && $_SESSION['role'] == "Admin"): ?>
-                            <button class="btn btn-primary" style="background-color: var(--color-violet-epsi);"
-                                data-bs-toggle="modal" data-bs-target="#Modal_Add_Event ">
-                                Ajouter un
-                                cours</button>
-                        <?php endif; ?>
+                    <?php if (isset($_SESSION['role']) && $_SESSION['role'] == "Admin"): ?>
+                        <button class="btn btn-primary" style="background-color: var(--color-violet-epsi);"
+                            data-bs-toggle="modal" data-bs-target="#Modal_Add_Event ">
+                            Ajouter un
+                            cours</button>
+                    <?php endif; ?>
                     <a href="controller/disconect_controller.php" class="disconnect_a"><button
                             class="disconnect_button">Déconnexion</button></a>
                 </div>
@@ -87,16 +84,38 @@ if (!isset($_SESSION['login_status']) || $_SESSION['login_status'] != true) {
         </div>
     </div>
 
-
     <div class="content">
-    <div class="content_left"> </div>
-    <div class="content_center_index">
-    <a class="btn btn-block custom-btn" href="/week.php">Calendrier</a>
-    <a class="btn btn-block custom-btn" href="/hardware.php">Hardware</a>
-    <a class="btn btn-block custom-btn" href="/room.php">Salles</a>
-    <a class="btn btn-block custom-btn" href="/files.php">Fichiers</a>
-</div>
-
+        <div class="content_left"> </div>
+        <div class="content_center_index">
+            <a class="btn btn-block custom-btn b-none" href="/week">Calendrier</a>
+            <a class="btn btn-block custom-btn b-none" href="/hardware">Hardware</a>
+            <a class="btn btn-block custom-btn b-none" href="/room">Salles</a>
+            <a class="btn btn-block custom-btn b-none" href="/files">Fichiers</a>
+        </div>
         <div class="content_right"></div>
     </div>
 </body>
+
+<style>
+    .b-none {
+        border: none;
+    }
+    
+    .content_center_index {
+        height: calc(100vh - 80px);
+        width: 33%;
+        display: flex;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .content_center_index a{
+        width: 33%;
+        display: flex;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+</style>

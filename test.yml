@@ -1,0 +1,50 @@
+version: "3.4"
+services:
+  nextcloud:
+    image: nextcloud:latest
+    environment:
+      - MYSQL_HOST=db
+      - MYSQL_DATABASE=nextcloud
+      - MYSQL_USER=nextcloud_user
+      - MYSQL_PASSWORD=KpAWugxjo7AYjB1E1npaEI&?
+    volumes:
+      - ./data:/var/www/html/data
+      - ./config:/var/www/html/config
+    deploy:
+      labels:
+        - traefik.enable=true
+        - traefik.docker.network=traefik_public-web
+        - traefik.constraint-label=traefik-public
+        - traefik.http.routers.workshop-nextcloud-public-http.rule=Host(`nextcloud.romain-igounet.fr`)
+        - traefik.http.routers.workshop-nextcloud-public-http.entrypoints=http
+        - traefik.http.routers.workshop-nextcloud-public-http.middlewares=https-redirect
+        # - traefik.http.routers.workshop-nextcloud-public-https.middlewares=filtrage-https
+        - traefik.http.routers.workshop-nextcloud-public-https.rule=Host(`nextcloud.romain-igounet.fr`)
+        - traefik.http.routers.workshop-nextcloud-public-https.entrypoints=https
+        - traefik.http.routers.workshop-nextcloud-public-https.tls=true
+        - traefik.http.routers.workshop-nextcloud-public-https.tls.certresolver=letsencrypt
+        - traefik.http.services.workshop-nextcloud-public-https.loadbalancer.server.port=80
+    networks:
+      - traefik
+      - intra
+
+
+
+  db:
+    image: mariadb:latest
+    environment:
+      - MYSQL_ROOT_PASSWORD=KpAWugxjo7AYjB1E1npaEI&?
+      - MYSQL_DATABASE=nextcloud
+      - MYSQL_USER=nextcloud_user
+      - MYSQL_PASSWORD=KpAWugxjo7AYjB1E1npaEI&?
+    volumes:
+      - ./mysql:/var/lib/mysql
+    networks:
+      - intra
+
+networks:
+  traefik:
+    external:
+      name: traefik_public-web
+  intra:
+    driver: overlay
