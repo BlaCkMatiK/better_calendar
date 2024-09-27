@@ -33,19 +33,29 @@
 
 @media only screen and (max-width: 600px) {
     .calendar .days .day_num .event {
-     aspect-ratio: 1 / 1;
+        aspect-ratio: 1 / 1;
     }
+
     .home {
-        margin-right: unset!important;
+        margin-right: unset !important;
     }
-  }
+
+    .calendar .days .day_num .event:nth-child(n), .calendar .days .day_num .event .end {
+        flex-direction: column;
+    }
+
+    .calendar .days .day_num .event span {
+        font-size: 10px;
+    }
+}
 
 .event .type {
     display: flex;
 }
 
 .home {
-    display:flex; margin-right: 20px
+    display: flex;
+    margin-right: 20px
 }
 
 .modal-dialog {
@@ -54,5 +64,6 @@
     right: 20px;
     margin: 0;
     width: auto;
-    max-width: 300px; /* Adjust width as needed */
-  }
+    max-width: 300px;
+    /* Adjust width as needed */
+}

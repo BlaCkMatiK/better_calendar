@@ -287,7 +287,7 @@
 
 .content_center_emprunt_form {
     background-color: var(--color-violet-epsi);
-    height: 90%;
+    height: fit-content;
     width: 90%;
     border-radius: 30px;
     display: flex;

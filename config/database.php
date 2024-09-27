@@ -15,7 +15,7 @@ $dsn = 'mysql:host=' . $config['host'] . ';dbname=' . $config['dbname'] . ';char
 try {
     $pdo = new PDO(dsn: $dsn, username: $config['username'], password: $config['password']);
 } catch (PDOException $e) {
-    echo "Erreur de connexion : " . $e->getMessage();
+    echo "Erreur de connexion";
     exit; 
 }
 

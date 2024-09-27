@@ -255,7 +255,7 @@ function afficherFormulaireReservationSalle($pdo)
     <div class="content">
         <div class="content_left">
             <div class="content_left_rooms_list">
-                <h3 class="content_left_rooms_list_title">Liste des salles disponibles</h3>
+                <h3 class="content_left_rooms_list_title">Liste des salles</h3>
                 <div class="content_left_rooms_box">
                     <?php afficherRoomList($pdo); ?>
                 </div>
