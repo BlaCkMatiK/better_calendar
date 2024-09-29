@@ -17,7 +17,7 @@ Le projet **Better Calendar** fait partie de cette solution et se concentre sur 
 
 Le dépôt GitHub de l'application mobile est disponible à l'adresse suivante :
 
-[Workshop Better Calendar Repo](https://github.com/POWLAIR/WorkshopBetterCalendar)
+[Application mobile Better Calendar Repo](https://github.com/POWLAIR/WorkshopBetterCalendar)
 
 
 ### Objectifs du projet
