@@ -7,6 +7,19 @@ Dans le cadre du **Workshop d'Innovation Numérique**, l'objectif est de concevo
 
 Le projet **Better Calendar** fait partie de cette solution et se concentre sur la gestion des cours, la réservation de salles et de matériel, tout en offrant des fonctionnalités utiles à la communauté des apprenants. L'application est conçue pour être intuitive, accessible via des plateformes web et mobiles, et facile à gérer pour les administrateurs.
 
+## Accès au site
+
+- **URL** : [Workshop Better Calendar](https://workshop.romain-igounet.fr/)
+- **Email** : `admin@epsi.fr`
+- **Mot de passe** : `azerty`
+
+## Repo de l'application mobile
+
+Le dépôt GitHub de l'application mobile est disponible à l'adresse suivante :
+
+[Workshop Better Calendar Repo](https://github.com/POWLAIR/WorkshopBetterCalendar)
+
+
 ### Objectifs du projet
 
 L'application **Better Calendar** vise à offrir une **gestion complète des ressources** (salles, matériel, événements) et des **informations utiles** au sein du campus. Chaque fonctionnalité a pour but de répondre à des besoins précis :
